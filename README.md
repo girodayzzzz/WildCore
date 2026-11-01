@@ -30,3 +30,11 @@ GitHub Pages can deploy the repository root using the workflow in `.github/workf
 ## Current status
 
 This is a brand and content foundation. Product inventory, pricing, checkout, contact endpoints, social links, analytics and the final hero photography are intentionally not fabricated and can be connected when confirmed.
+
+
+## Product catalogue preparation
+
+- `data/products.json` is the structured product catalogue and currently contains no products.
+- `docs/PRODUCT-CATALOGUE.md` explains how to add direct-store and affiliate items when suppliers are approved.
+- Product data is kept separate from page layout so a future catalogue renderer or commerce integration can be added without rebuilding the editorial pages.
+- Do not enable checkout until legal seller details, payment processing, shipping, returns, tax and customer support are configured.
