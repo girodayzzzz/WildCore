@@ -17,3 +17,22 @@
 ::selection{background:var(--gold);color:#101810}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 @media(max-width:700px){.hero{min-height:680px;background-position:58% center}.hero:before{background:linear-gradient(90deg,rgba(5,12,8,.82),rgba(5,12,8,.38)),linear-gradient(0deg,rgba(5,12,8,.42),transparent 70%)}.page-hero{background-position:60% center}}
+
+
+/* WILDCORE learning tools */
+.checklist-top{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px;border:1px solid var(--line);background:var(--surface);margin-bottom:28px}
+.checklist-top h2{margin:4px 0;font-size:clamp(30px,5vw,48px)}
+.checklist-top h2 small{font-size:15px;color:var(--muted);font-weight:400}
+.progress-track{height:8px;background:#ffffff20;border-radius:20px;overflow:hidden;max-width:520px}
+.progress-track span{display:block;width:0;height:100%;background:var(--gold);transition:width .2s}
+.checklist-actions{display:flex;gap:12px;flex-wrap:wrap}
+.checklist-grid .content-card label,.quiz-options label{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.checklist-grid input[type=checkbox],.quiz-options input{accent-color:var(--gold);margin-top:7px;flex:none}
+.quiz-options{display:grid;gap:6px;margin:20px 0}
+.quiz-result{min-height:28px;color:var(--gold);font-weight:700}
+.quiz-result.is-correct{color:#9ac99a}
+.content-card details{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.content-card summary{cursor:pointer;color:var(--gold);font-weight:700}
+.content-card details p{margin-top:14px}
+@media(max-width:700px){.checklist-top{grid-template-columns:1fr}.checklist-actions .btn{flex:1}}
+@media print{body{background:white;color:#111}.site-header,.footer,.page-hero,.checklist-actions,.notice{display:none!important}.wrap{width:100%}.content-card{break-inside:avoid;background:white;color:#111;border:1px solid #ccc}.checklist-grid{display:block}.checklist-grid .content-card{margin-bottom:16px}.checklist-grid label{color:#111}.checklist-top{border:0;background:white;color:#111}.progress-track{border:1px solid #999}}
