@@ -50,3 +50,17 @@
 .footer{padding:58px 0 24px;background:#070d09;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1fr;gap:36px;align-items:start}.footer-brand .logo{display:inline-block;margin-bottom:14px}.footer-brand p{max-width:290px;line-height:1.8;margin:0;color:var(--muted)}.footer-column{display:flex;flex-direction:column;gap:11px}.footer-column h2{font-size:10px;letter-spacing:.16em;color:var(--gold);margin:5px 0 8px;font-weight:700}.footer-column a,.footer-legal a{color:var(--muted);text-decoration:none;transition:color .2s}.footer-column a:hover,.footer-legal a:hover{color:var(--gold)}.footer-bottom{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-size:11px}.footer-legal{display:flex;gap:18px;flex-wrap:wrap}.footer .logo{font-size:22px}
 @media(max-width:760px){.footer{padding:42px 0 22px}.footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}.footer-brand{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column}.footer-legal{gap:12px}}
 @media(max-width:420px){.footer-inner{grid-template-columns:1fr 1fr;gap:24px 14px}.footer-column h2{font-size:9px}.footer-column a{font-size:12px}}
+
+/* Journal search and topic filters */
+.journal-tools{margin:0 0 28px;padding:24px;background:var(--surface);border:1px solid var(--line)}
+.journal-search-label{display:block;color:var(--gold);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.journal-search{width:100%;max-width:520px;padding:14px 16px;background:#09110d;border:1px solid #ffffff38;color:var(--cream);font:inherit;outline:none}
+.journal-search:focus{border-color:var(--gold)}
+.journal-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.journal-filter{padding:8px 13px;background:transparent;border:1px solid #ffffff38;color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.journal-filter:hover,.journal-filter.is-active{background:var(--gold);border-color:var(--gold);color:#101810}
+.journal-results{font-size:11px;color:var(--muted);margin:12px 0 0}
+.journal-card[hidden]{display:none!important}
+.hero{background-image:linear-gradient(90deg,#09110df2 0%,#09110dc9 42%,#09110d35 100%),url('../images/wildcore-hero.jpg'),linear-gradient(120deg,#09110d 0%,#17271c 55%,#344b37 100%);background-size:cover;background-position:center}
+.hero:before{background:linear-gradient(90deg,#09110d 0%,#09110dc9 36%,#09110d35 100%)}
+.hero:after{display:none}
