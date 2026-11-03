@@ -7,7 +7,7 @@ function applyLanguage(next){lang=next;localStorage.setItem(key,lang);document.d
   {label:['Field Hub','Terensko središče','Field Hub'],links:[['field-hub.html','Overview','Pregled','Übersicht'],['field-station.html','Field Station','Terenska postaja','Field Station'],['field-kit.html','Field Kit','Terenski komplet','Field Kit'],['tools.html','Outdoor Tools','Outdoor orodja','Outdoor-Werkzeuge'],['camping-checklist.html','Checklists','Seznami opreme','Checklisten']]},
   {label:['About','O nas','Über uns'],links:[['about.html','Our Story','Naša zgodba','Unsere Geschichte'],['contact.html','Contact','Kontakt','Kontakt']]}
  ];
- const current=location.pathname.split('/').pop()||'index.html';
+ const current=location.pathname.endsWith('/')?'index.html':(location.pathname.split('/').pop()||'index.html');
  const t=(a)=>a[lang==='sl'?2:lang==='de'?3:1];
  const home='<a class="nav-home" href="index.html" data-en="Home" data-sl="Domov" data-de="Startseite"'+(current==='index.html'?' aria-current="page"':'')+'>'+t(['index.html','Home','Domov','Startseite'])+'</a>';
  const groupsHtml=groups.map(g=>{const active=g.links.some(x=>x[0]===current);return '<details class="nav-group"'+(active?' data-active="true"':'')+'><summary data-en="'+g.label[0]+'" data-sl="'+g.label[1]+'" data-de="'+g.label[2]+'">'+g.label[lang==='sl'?1:lang==='de'?2:0]+'</summary><div class="nav-dropdown">'+g.links.map(x=>'<a href="'+x[0]+'" data-en="'+x[1]+'" data-sl="'+x[2]+'" data-de="'+x[3]+'"'+(current===x[0]?' aria-current="page"':'')+'>'+t(x)+'</a>').join('')+'</div></details>'}).join('');
