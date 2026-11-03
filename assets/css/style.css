@@ -234,3 +234,9 @@ a.content-card:hover,.journal-card:hover,.destination-card:hover{transform:trans
  .footer-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}
 }
 @media(max-width:480px){.footer-layout{grid-template-columns:1fr 1fr}.footer-layout .footer-brand,.footer-layout .footer-bottom{grid-column:1/-1}}
+
+/* WILDCORE visual refinement: restrained field-camo texture and accessible navigation */
+.hero:before{background:linear-gradient(90deg,#09110d 0%,#09110de8 39%,#09110d48 100%),radial-gradient(ellipse at 18% 22%,#71815a22 0 8%,transparent 8.5%),radial-gradient(ellipse at 43% 68%,#82906a18 0 11%,transparent 11.5%),radial-gradient(ellipse at 78% 24%,#657b5520 0 9%,transparent 9.5%),radial-gradient(ellipse at 88% 78%,#8a95651a 0 12%,transparent 12.5%),repeating-linear-gradient(125deg,transparent 0 90px,#ffffff05 91px 92px)}
+.main-nav .nav-group>summary:focus-visible,.nav-dropdown a:focus-visible,.main-nav>a:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+.main-nav .nav-group[open]>summary{color:var(--gold)}
+@media(max-width:820px){.main-nav .nav-group>summary{padding:13px 5px;border-top:1px solid var(--line)}.main-nav .nav-group[open] .nav-dropdown{padding-bottom:10px}.nav-dropdown a{border:0!important}}
