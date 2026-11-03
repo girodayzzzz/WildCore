@@ -183,3 +183,19 @@ a.content-card:hover,.journal-card:hover,.destination-card:hover{transform:trans
 @media(max-width:900px){.main-nav{gap:9px}.header-inner{flex-wrap:wrap}.destination-controls{grid-template-columns:1fr 1fr}.destination-controls #destination-count{grid-column:1/-1}.footer-inner{gap:24px}}
 @media(max-width:700px){.main-nav{max-height:calc(100svh - 74px);overflow-y:auto;overscroll-behavior:contain}.destination-controls{grid-template-columns:1fr}.destination-controls #destination-count{grid-column:auto}.destination-guidance{grid-template-columns:1fr}.destination-guidance .text-link{white-space:normal}.academy-path{grid-template-columns:1fr}.section{padding-block:64px}}
 @media(max-width:420px){.hero h1{font-size:clamp(50px,15vw,68px)}.hero-content{padding:82px 0}.eyebrow{letter-spacing:2.5px}.page-hero h1{font-size:clamp(42px,13vw,58px)}}
+
+/* Simplified six-section primary navigation */
+.main-nav{gap:clamp(18px,2.5vw,34px)}
+.main-nav a{font-size:10px;letter-spacing:1.7px;font-weight:800}
+.main-nav a[aria-current="page"]{color:var(--gold)}
+@media(max-width:1050px){.main-nav{gap:clamp(12px,1.8vw,20px)}.main-nav a{font-size:9px;letter-spacing:1.2px}}
+@media(max-width:820px){.main-nav.open{gap:0}.main-nav.open a{padding:13px 4px;width:100%;font-size:12px;letter-spacing:1.8px}}
+.field-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.field-hub-card{display:flex;flex-direction:column;gap:12px;min-height:220px;padding:25px;background:linear-gradient(145deg,#1b2c21,#101a14);border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.field-hub-card:hover{transform:translateY(-3px);border-color:#c9ad7b99}
+.field-hub-card small{color:var(--gold);font-size:10px;letter-spacing:1.6px}
+.field-hub-card h2{font-size:22px;margin:0}
+.field-hub-card p{color:var(--muted);font-size:13px;line-height:1.7;margin:0;flex:1}
+.field-hub-card span{color:var(--gold);font-size:12px;font-weight:700}
+@media(max-width:800px){.field-hub-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.field-hub-grid{grid-template-columns:1fr}.field-hub-card{min-height:unset}}
