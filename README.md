@@ -6,6 +6,8 @@ Bilingual (English / Slovenian) static website for the WILDCORE outdoor brand.
 
 - `index.html` — homepage
 - `shop.html` — collection overview
+- `field-station.html` — route preview, weather snapshot, private trip log and readiness checklist
+- `assets/js/field-station.js` — Field Station interactions
 - `fishing.html`, `survival.html`, `camping.html`, `hunting.html`, `accessories.html` — category pages
 - `journal.html` — editorial / field notes landing page
 - `about.html`, `contact.html`, `privacy.html` — brand and information pages
