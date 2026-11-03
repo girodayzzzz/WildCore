@@ -108,3 +108,6 @@
 
 /* Outdoor map search and geolocation */
 .map-search-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px;background:#101b14;border:1px solid var(--line);border-bottom:0}.map-search-bar input{flex:1 1 220px;min-width:0;padding:11px 12px;background:#0b140e;color:var(--cream);border:1px solid var(--line);font:inherit}.map-search-bar button{padding:10px 12px;background:#1d3022;color:var(--cream);border:1px solid #c9ad7b;cursor:pointer;font:inherit;font-size:12px}.map-search-bar span{flex-basis:100%;font-size:11px;color:var(--gold)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* WILDCORE Field Station PRO */
+.weather-hours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.weather-hour{padding:10px;background:#0c160f;border:1px solid var(--line);display:grid;gap:3px;font-size:11px}.weather-hour strong{color:var(--gold)}.weather-hour small{color:var(--muted)}#route-gpx-import{margin-top:6px;color:var(--muted)}#route-elevation-profile{background:#0b1510;border:1px solid var(--line)}@media(max-width:700px){.weather-hours{grid-template-columns:repeat(2,minmax(0,1fr))}}
