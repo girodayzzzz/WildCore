@@ -111,3 +111,6 @@
 
 /* WILDCORE Field Station PRO */
 .weather-hours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.weather-hour{padding:10px;background:#0c160f;border:1px solid var(--line);display:grid;gap:3px;font-size:11px}.weather-hour strong{color:var(--gold)}.weather-hour small{color:var(--muted)}#route-gpx-import{margin-top:6px;color:var(--muted)}#route-elevation-profile{background:#0b1510;border:1px solid var(--line)}@media(max-width:700px){.weather-hours{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* WILDCORE Field Station PRO weather */
+.weather-hours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.weather-hour{padding:10px;background:#0c160f;border:1px solid var(--line);display:grid;gap:3px;font-size:11px}.weather-hour strong{color:var(--gold)}.weather-hour small{color:var(--muted)}@media(max-width:700px){.weather-hours{grid-template-columns:repeat(2,minmax(0,1fr))}}
