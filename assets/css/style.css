@@ -101,3 +101,7 @@
 
 /* WILDCORE protected areas / Natura map controls */
 .protected-layer-controls{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}.protected-layer-controls .small-note{margin:5px 0 0 26px}.protected-popup{line-height:1.55}.protected-popup strong{display:block;margin-bottom:7px;color:#344b38}.protected-popup div{font-size:12px;margin:3px 0}.leaflet-popup-content small{display:block;margin-top:8px;color:#687568}
+
+/* High-contrast, category-coloured outdoor map markers */
+.wild-map .leaflet-interactive{cursor:pointer}.wild-map .leaflet-marker-icon{filter:drop-shadow(0 2px 3px rgba(0,0,0,.75))}.wild-map .leaflet-popup-content-wrapper{border:2px solid #c9ad7b;border-radius:8px}.wild-map .leaflet-popup-content{color:#18231b;font-size:13px;line-height:1.55}.wild-map .leaflet-popup-content a{color:#315f91;text-decoration:underline;font-weight:700}
+@media(max-width:520px){.wild-map .leaflet-popup-content{font-size:14px}}
