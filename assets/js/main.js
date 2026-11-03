@@ -64,3 +64,16 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
 });
 })();
+
+/* WILDCORE unified visual identity: header logo and favicon on every page */
+(()=> {
+  const logoPath='assets/images/wildcore-logo.svg';
+  document.querySelectorAll('.site-header .logo').forEach(link=>{
+    link.innerHTML='<img src="'+logoPath+'" alt="WILDCORE — Explore, Learn, Equip, Survive" width="260" height="55">';
+    link.setAttribute('aria-label','WILDCORE home');
+  });
+  let icon=document.querySelector('link[rel="icon"]');
+  if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon);}
+  icon.href='assets/favicon.svg';
+  icon.type='image/svg+xml';
+})();
