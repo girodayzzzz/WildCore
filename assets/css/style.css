@@ -242,13 +242,15 @@ a.content-card:hover,.journal-card:hover,.destination-card:hover{transform:trans
 @media(max-width:820px){.main-nav .nav-group>summary{padding:13px 5px;border-top:1px solid var(--line)}.main-nav .nav-group[open] .nav-dropdown{padding-bottom:10px}.nav-dropdown a{border:0!important}}
 
 
-/* WILDCORE full-site woodland camouflage identity */
-html{background:#0a120c}
+/* WILDCORE full-site woodland camouflage identity — same source as the homepage hero */
+html{min-height:100%;background:#0a120c}
 body{
+  min-height:100vh;
   background-color:#0a120c;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='420' viewBox='0 0 520 420'%3E%3Crect width='520' height='420' fill='%230a120c'/%3E%3Cg opacity='.62'%3E%3Cpath fill='%231a2b1c' d='M-35 30Q15-12 68 18T143 54Q163 91 112 111T30 99Q-13 78-35 30ZM190-22Q249-3 264 39T230 103Q186 115 163 72T190-22ZM365 12Q415-20 470 12T529 80Q498 119 448 91T365 12ZM-22 231Q30 187 80 218T111 292Q75 331 23 302T-22 231ZM165 190Q214 157 263 194T287 264Q251 306 199 278T165 190ZM355 205Q404 164 463 200T527 279Q488 318 434 290T355 205ZM75 365Q123 324 174 354T199 426H44Q27 393 75 365ZM300 350Q348 312 397 343T425 420H272Q258 382 300 350Z'/%3E%3Cpath fill='%232d4028' d='M95-20Q145 5 137 49T80 87Q42 57 56 20T95-20ZM286 88Q326 54 367 81T385 143Q351 174 309 148T286 88ZM-25 145Q21 115 62 148T70 211Q34 240-5 211T-25 145ZM230 310Q271 276 313 306T322 370Q284 402 244 375T230 310ZM440 330Q477 295 520 325V405Q486 431 451 400T440 330Z'/%3E%3Cpath fill='%23414a2d' d='M-15 104Q28 75 64 105T61 159Q22 181-10 151ZM145 130Q182 99 215 128T210 183Q174 205 145 174ZM390 125Q426 91 462 119T460 174Q425 198 394 168ZM110 270Q147 238 182 267T179 321Q143 343 113 313ZM315 16Q346-10 379 15T374 66Q340 86 314 58Z'/%3E%3Cpath fill='%23534b32' d='M30 15Q53-2 78 14T81 51Q55 69 32 49ZM265 215Q293 193 320 214T317 255Q289 273 265 249ZM470 15Q496-2 520 16V54Q493 68 472 47Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image:linear-gradient(rgba(5,12,8,.78),rgba(5,12,8,.82)),url('../images/wildcore-camo.svg');
   background-repeat:repeat;
-  background-size:520px 420px;
+  background-size:1600px 900px;
+  background-position:center top;
   background-attachment:fixed;
 }
 .site-header{background:rgba(7,14,9,.94)}
