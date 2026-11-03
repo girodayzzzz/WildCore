@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values=".32 0 0 0 .04 .28 0 0 0 .05 .18 0 0 0 .03 0 0 0 .22 0"/></filter>
+ <pattern id="camo" width="640" height="520" patternUnits="userSpaceOnUse">
+  <rect width="640" height="520" fill="#11150e"/>
+  <path d="M-40 40Q35-30 115 20T260 8Q315 55 260 105T120 140Q45 115-40 175Z" fill="#343a24"/>
+  <path d="M300-35Q390 5 430 55T590 80Q675 135 600 190T455 160Q385 130 335 180T260 105Z" fill="#202719"/>
+  <path d="M-35 230Q50 170 135 215T250 260Q290 330 210 360T60 335Q-5 310-35 370Z" fill="#4b4c30"/>
+  <path d="M285 210Q355 165 420 215T550 230Q635 280 570 350T425 335Q355 310 300 375T225 310Z" fill="#303824"/>
+  <path d="M-25 420Q40 350 120 385T250 430Q275 500 180 545T25 505Z" fill="#242b1d"/>
+  <path d="M330 400Q405 350 480 395T640 425L670 540H400Q330 495 330 400Z" fill="#55513a"/>
+  <path d="M130 145Q180 120 220 155T255 220Q225 270 165 250T110 205Z" fill="#151a12"/>
+  <path d="M480 115Q530 80 575 120T610 190Q565 230 515 205T465 155Z" fill="#171d14"/>
+  <path d="M280 365Q325 330 365 365T390 435Q345 475 300 440T260 395Z" fill="#171c13"/>
+ </pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#camo)"/>
+<rect width="1600" height="900" filter="url(#grain)" opacity=".28"/>
+<rect width="1600" height="900" fill="#050906" opacity=".22"/>
+</svg>
