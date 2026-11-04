@@ -1,29 +1,30 @@
 # WILDCORE brand assets
 
-The current WILDCORE logo and favicon are already in the correct locations in this repository.
+These are the current approved WILDCORE brand assets. Use them consistently across every page and new feature.
 
-## Files and exact paths
+## Current files
 
 - Main horizontal logo: `assets/images/wildcore-logo.svg`
-- Browser favicon: `assets/favicon.svg`
+- 16 × 16 browser favicon: `assets/images/favicon-16.png`
+- 32 × 32 browser favicon: `assets/images/favicon-32.png`
+- 512 × 512 app / touch icon: `assets/images/wildcore-favicon-512.png`
 
-The website header loads the logo from `assets/images/wildcore-logo.svg`. Pages should load the favicon with:
+## Website implementation
+
+Use the horizontal SVG logo in both the site header and footer:
 
 ```html
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<a class="logo" href="index.html" aria-label="WILDCORE home">
+  <img src="assets/images/wildcore-logo.svg" alt="WILDCORE — Explore, Learn, Equip, Survive">
+</a>
 ```
 
-## If you want to replace either asset later
+Use the PNG favicon set in every HTML page:
 
-1. Open the GitHub repository: https://github.com/girodayzzzz/WildCore
-2. Open the `assets` folder.
-3. For the logo, open `assets/images`; upload the replacement using the exact filename `wildcore-logo.svg` and replace the existing file.
-4. For the favicon, open `assets`; upload the replacement using the exact filename `favicon.svg` and replace the existing file.
-5. Keep the same filenames and folder paths. This avoids having to change the website code.
+```html
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="512x512" href="assets/images/wildcore-favicon-512.png">
+```
 
-## Recommended formats
-
-- Logo: SVG with a transparent background; a wide horizontal layout works best.
-- Favicon: SVG, square viewBox (1:1), simple high-contrast symbol that remains legible at small sizes.
-
-Do not upload the logo into the repository root. Keep it in `assets/images/`; keep the favicon directly inside `assets/`.
+Do not reintroduce the retired text-only `WILD<span>CORE</span>` wordmark or the deleted `assets/favicon.svg` path. Keep the current filenames and paths consistent throughout the website.
