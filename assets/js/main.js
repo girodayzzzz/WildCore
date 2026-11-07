@@ -83,8 +83,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     link.innerHTML='<img src="'+logoPath+'" alt="WILDCORE — Explore, Learn, Equip, Survive" width="260" height="55">';
     link.setAttribute('aria-label','WILDCORE home');
   });
-  let icon=document.querySelector('link[rel="icon"]');
-  if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon);}
-  icon.href='assets/favicon.svg';
-  icon.type='image/svg+xml';
+  document.querySelectorAll('link[rel="icon"],link[rel="apple-touch-icon"]').forEach(node=>node.remove());
+  const icons=[['icon','16x16','assets/images/favicon-16.png'],['icon','32x32','assets/images/favicon-32.png'],['apple-touch-icon','512x512','assets/images/wildcore-favicon-512.png']];
+  icons.forEach(([rel,size,href])=>{const node=document.createElement('link');node.rel=rel;node.sizes=size;node.href=href;if(rel==='icon')node.type='image/png';document.head.appendChild(node);});
 })();
