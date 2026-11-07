@@ -87,3 +87,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const icons=[['icon','16x16','assets/images/favicon-16.png'],['icon','32x32','assets/images/favicon-32.png'],['apple-touch-icon','512x512','assets/images/wildcore-favicon-512.png']];
   icons.forEach(([rel,size,href])=>{const node=document.createElement('link');node.rel=rel;node.sizes=size;node.href=href;if(rel==='icon')node.type='image/png';document.head.appendChild(node);});
 })();
+
+/* WILDCORE local recent-page history for the personal Field Hub */
+(()=>{'use strict';try{const href=location.pathname.split('/').pop()||'index.html';if(href==='field-hub.html'||href==='404.html')return;const key='wildcore-recent-pages-v1',items=JSON.parse(localStorage.getItem(key)||'[]');const entry={href,title:document.title.replace(/\s*\|\s*WILDCORE\s*$/i,'').trim()||href,visitedAt:new Date().toISOString()};const next=[entry,...(Array.isArray(items)?items:[]).filter(x=>x&&x.href!==href)].slice(0,8);localStorage.setItem(key,JSON.stringify(next))}catch(e){}})();
