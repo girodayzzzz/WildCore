@@ -342,3 +342,35 @@ body{
 .workflow-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.workflow-step{padding:20px;border:1px solid var(--line);background:rgba(13,23,16,.94)}.workflow-step small{color:var(--gold);letter-spacing:1px}.workflow-step h3{font-size:18px;margin:10px 0}.workflow-step p{font-size:12px;color:var(--muted);line-height:1.6}
 @media(max-width:800px){.weekly-current{grid-template-columns:1fr}.weekly-upcoming{grid-template-columns:repeat(2,minmax(0,1fr))}.weekly-home-panel{align-items:flex-start;flex-direction:column}.workflow-grid{grid-template-columns:1fr}}
 @media(max-width:440px){.weekly-upcoming{grid-template-columns:1fr}}
+
+/* Homepage refresh: clear weekly hook, three primary actions and connected editorial paths */
+.home-weekly-section{padding-top:58px;padding-bottom:58px}
+.home-weekly-card{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:32px;align-items:center;padding:clamp(26px,5vw,54px);border:1px solid #c9ad7b88;background:linear-gradient(120deg,rgba(25,41,29,.98),rgba(9,17,12,.97));position:relative;overflow:hidden}
+.home-weekly-card:after{content:"";position:absolute;right:12%;top:-100px;width:280px;height:280px;border:1px solid #c9ad7b22;border-radius:50%;box-shadow:0 0 0 35px #c9ad7b08,0 0 0 70px #c9ad7b05;pointer-events:none}
+.home-weekly-copy,.home-weekly-action{position:relative;z-index:1}
+.home-weekly-copy h2{font-size:clamp(32px,4vw,50px);margin:12px 0 8px}
+.home-weekly-copy h3{font-size:clamp(20px,2.4vw,28px);margin:0 0 10px;color:var(--gold)}
+.home-weekly-copy p{max-width:700px;color:var(--muted);margin:0}
+.home-weekly-meta{display:flex;gap:10px 20px;flex-wrap:wrap;margin-top:22px}
+.home-weekly-meta span{font-size:9px;letter-spacing:1.2px;color:#c4cbbb}
+.home-weekly-action{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.home-weekly-action .btn{margin:0}
+.home-weekly-mark{font-size:38px;font-weight:900;letter-spacing:-3px;color:#c9ad7b;border-bottom:1px solid #c9ad7b66;padding-bottom:12px;width:100%}
+.home-action-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.home-action-card{display:flex;flex-direction:column;align-items:flex-start;min-height:310px;padding:25px;border:1px solid var(--line);background:linear-gradient(150deg,rgba(24,39,29,.97),rgba(10,18,13,.97));transition:transform .25s,border-color .25s}
+.home-action-card:hover{transform:translateY(-5px);border-color:#c9ad7b88}
+.home-action-number{font-size:9px;letter-spacing:1.7px;color:var(--gold);font-weight:800}
+.home-action-icon{display:grid;place-items:center;width:46px;height:46px;margin:24px 0 8px;border:1px solid #c9ad7b77;color:var(--gold);font-size:13px;font-weight:800}
+.home-action-card h3{font-size:23px;margin:8px 0}
+.home-action-card p{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 22px}
+.home-action-card .text-link{margin-top:auto;color:var(--gold);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.home-worlds-section{padding-top:50px}
+.home-journal-section{padding-top:55px}
+.home-academy-band{padding:70px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(110deg,rgba(20,34,24,.96),rgba(8,15,10,.92))}
+.home-academy-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.home-academy-inner>div{max-width:700px}
+.home-academy-inner h2{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:12px 0}
+.home-academy-inner p{color:var(--muted);max-width:650px}
+.home-academy-inner .btn{margin:0;white-space:nowrap}
+@media(max-width:800px){.home-weekly-card{grid-template-columns:1fr}.home-weekly-action{flex-direction:row;align-items:center;flex-wrap:wrap}.home-weekly-mark{width:auto;border:0;padding:0 16px 0 0}.home-action-grid{grid-template-columns:1fr}.home-action-card{min-height:250px}.home-academy-inner{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.home-weekly-section{padding-top:35px;padding-bottom:35px}.home-weekly-card{padding:23px}.home-weekly-meta{flex-direction:column;gap:6px}.home-academy-band{padding:48px 0}}
