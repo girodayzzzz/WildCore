@@ -315,3 +315,14 @@ body{
   .main-nav .nav-group[open] .nav-dropdown{display:grid}
   .main-nav .nav-group>summary:focus-visible{outline-offset:1px}
 }
+
+
+/* WILDCORE Field Hub dashboard */
+.hub-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.hub-stat{display:flex;flex-direction:column;gap:8px;padding:20px;background:linear-gradient(145deg,#19271e,#0d1711);border:1px solid var(--line)}
+.hub-stat>span{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+.hub-stat strong{font-size:clamp(25px,4vw,36px);color:var(--gold);line-height:1.1}
+.hub-stat small,.hub-storage-note{font-size:12px;color:var(--muted);line-height:1.65}
+.hub-storage-note{max-width:820px;margin:14px 0 0}
+.academy-progress-detail{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:620px){.hub-stats{grid-template-columns:1fr}.hub-stat{padding:16px}}
