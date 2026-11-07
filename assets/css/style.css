@@ -326,3 +326,19 @@ body{
 .hub-storage-note{max-width:820px;margin:14px 0 0}
 .academy-progress-detail{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
 @media(max-width:620px){.hub-stats{grid-template-columns:1fr}.hub-stat{padding:16px}}
+
+/* Weekly WILDCORE challenges and connected field workflow */
+.weekly-home-panel{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:clamp(24px,4vw,42px);border:1px solid #c9ad7b66;background:linear-gradient(120deg,rgba(25,41,29,.97),rgba(11,20,14,.97));}
+.weekly-home-panel>div{max-width:680px}.weekly-home-panel h3,.weekly-home-panel h2{margin:10px 0;font-size:clamp(24px,3vw,34px)}.weekly-home-panel p{color:var(--muted);line-height:1.7;margin:0}.weekly-kicker{font-size:10px;letter-spacing:1.8px;color:var(--gold);font-weight:800}
+.weekly-meta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.weekly-meta span{border:1px solid var(--line);padding:7px 10px;color:var(--muted);font-size:11px}
+.weekly-current{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:20px;align-items:stretch}
+.weekly-challenge-card{padding:clamp(24px,4vw,38px);border:1px solid #c9ad7b66;background:linear-gradient(145deg,rgba(25,41,29,.98),rgba(10,18,13,.98))}
+.weekly-challenge-card h2{font-size:clamp(27px,4vw,42px);margin:12px 0}.weekly-challenge-card p{color:var(--muted);line-height:1.75}
+.weekly-action-card{padding:25px;border:1px solid var(--line);background:rgba(13,23,16,.96);display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.weekly-action-card label{display:flex;gap:12px;align-items:flex-start;line-height:1.55;cursor:pointer}.weekly-action-card input{accent-color:var(--gold);width:19px;height:19px;flex:0 0 auto;margin-top:2px}
+.weekly-progress-track{height:6px;background:#ffffff18;margin-top:12px}.weekly-progress-track span{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}
+.weekly-upcoming{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.weekly-upcoming article{padding:20px;border:1px solid var(--line);background:rgba(13,23,16,.94)}.weekly-upcoming small{color:var(--gold);font-size:10px;letter-spacing:1px}.weekly-upcoming h3{font-size:18px;margin:12px 0 8px}.weekly-upcoming p{font-size:12px;color:var(--muted);line-height:1.65;margin:0}
+.weekly-note{font-size:12px;color:var(--muted);line-height:1.65;margin-top:16px}
+.workflow-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.workflow-step{padding:20px;border:1px solid var(--line);background:rgba(13,23,16,.94)}.workflow-step small{color:var(--gold);letter-spacing:1px}.workflow-step h3{font-size:18px;margin:10px 0}.workflow-step p{font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:800px){.weekly-current{grid-template-columns:1fr}.weekly-upcoming{grid-template-columns:repeat(2,minmax(0,1fr))}.weekly-home-panel{align-items:flex-start;flex-direction:column}.workflow-grid{grid-template-columns:1fr}}
+@media(max-width:440px){.weekly-upcoming{grid-template-columns:1fr}}
