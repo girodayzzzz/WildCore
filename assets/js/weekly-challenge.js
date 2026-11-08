@@ -57,15 +57,47 @@ const extraChallenges=[
 {title:["Build a personal learning plan","Sestavi osebni učni načrt"],description:["A short practical exercise to improve preparation, awareness and responsible decisions.","Kratka praktična vaja za boljšo pripravo, pozornost in odgovorno odločanje."],task:["Complete a focused review of build a personal learning plan. Write down one useful lesson and one practical action you can apply on your next outing.","Opravi usmerjen pregled področja: sestavi osebni učni načrt. Zapiši eno koristno spoznanje in en praktičen korak za naslednji izlet."],href:"academy.html"}
 ];
 const challengeBank=[...challenges,...extraChallenges];
-const storageKey='wildcore-weekly-challenges-v1';
-function isoWeek(date){const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));d.setUTCDate(d.getUTCDate()+4-(d.getUTCDay()||7));const y=d.getUTCFullYear(),start=new Date(Date.UTC(y,0,1));return {year:y,week:Math.ceil((((d-start)/86400000)+1)/7)}}
-function mondayOf(date,offset){const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());const day=(d.getDay()+6)%7;d.setDate(d.getDate()-day+offset*7);return d}
-function getLang(){return localStorage.getItem('wildcore-language')==='sl'?'sl':'en'}
-function fmt(date,lang){return new Intl.DateTimeFormat(lang==='sl'?'sl-SI':'en-GB',{day:'numeric',month:'short'}).format(date)}
-const now=new Date(),current=isoWeek(now),idx=Math.min(current.week,52)-1,challenge=challengeBank[idx],weekKey=current.year+'-'+String(current.week).padStart(2,'0');
-let progress={};try{progress=JSON.parse(localStorage.getItem(storageKey)||'{}')||{}}catch(e){progress={}}
-const check=document.getElementById('challenge-complete'),status=document.getElementById('challenge-status'),bar=document.getElementById('challenge-progress');
-function render(){const lang=getLang(),sl=lang==='sl';if(homeTitle){homeTitle.textContent=challenge.title[sl?1:0];const desc=document.getElementById('weekly-home-description');if(desc)desc.textContent=challenge.description[sl?1:0];const guide=document.getElementById('weekly-home-guide');if(guide)guide.href=challenge.href;const number=document.getElementById('weekly-home-number');if(number)number.textContent=(sl?'TEDEN ':'WEEK ')+current.week+' / '+current.year+' · 52 '+(sl?'IZZIVOV':'CHALLENGES');}if(!root)return;document.getElementById('challenge-title').textContent=challenge.title[sl?1:0];document.getElementById('challenge-description').textContent=challenge.description[sl?1:0];document.getElementById('challenge-task').textContent=(sl?'Tvoja naloga: ':'Your task: ')+challenge.task[sl?1:0];document.getElementById('challenge-guide').href=challenge.href;document.getElementById('challenge-week-label').textContent=(sl?'Teden ':'Week ')+current.week+' / '+current.year;const weekEnd=new Date(mondayOf(now,0).getTime()+6*86400000);document.getElementById('challenge-date-label').textContent=fmt(mondayOf(now,0),lang)+' – '+fmt(weekEnd,lang);const done=!!progress[weekKey];check.checked=done;status.textContent=done?(sl?'Izziv je označen kot opravljen.':'Challenge marked as complete.'):(sl?'Izziv še ni označen kot opravljen.':'Not completed yet.');bar.style.width=done?'100%':'0%';root.innerHTML='';for(let n=1;n<=4;n++){const date=mondayOf(now,n),w=isoWeek(date),item=challengeBank[Math.min(w.week,52)-1],card=document.createElement('article'),small=document.createElement('small'),h=document.createElement('h3'),p=document.createElement('p');small.textContent=(sl?'TEDEN ':'WEEK ')+w.week+' · '+fmt(date,lang);h.textContent=item.title[sl?1:0];p.textContent=item.description[sl?1:0];card.append(small,h,p);root.append(card)}}
-if(check)check.addEventListener('change',()=>{progress[weekKey]=check.checked;try{localStorage.setItem(storageKey,JSON.stringify(progress))}catch(e){}render()});
+const tracks={outdoor:{ids:[0,1,2,3,4,5,6,7,24,25,26,29,30]},fishing:{ids:[12,13,14,15,16,17,18,19,20,27,28,50,51]},hunting:{ids:[8,9,21,22,23,31,32,33,34,35,40,41,42]},tactical:{ids:[10,11,36,37,38,39,43,44,45,46,47,48,49]}};
+const root=document.querySelector('[data-weekly-challenge]');if(!root)return;
+const category=root.dataset.weeklyChallenge,track=tracks[category];if(!track)return;
+const storageKey='wildcore-category-challenges-v1';let progress={};try{progress=JSON.parse(localStorage.getItem(storageKey)||'{}')||{}}catch(e){progress={}}
+function language(){return localStorage.getItem('wildcore-language')==='sl'?'sl':'en'}
+function isoWeek(date){const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));d.setUTCDate(d.getUTCDate()+4-(d.getUTCDay()||7));const year=d.getUTCFullYear(),start=new Date(Date.UTC(year,0,1));return {year,week:Math.ceil((((d-start)/86400000)+1)/7)}}
+function monday(year,week){const jan4=new Date(year,0,4);return new Date(year,0,4-((jan4.getDay()+6)%7)+(week-1)*7)}
+function fmt(date,lang){return new Intl.DateTimeFormat(lang==='sl'?'sl-SI':'en-GB',{day:'numeric',month:'short',year:'numeric'}).format(date)}
+function scheduledCategory(week){return ['outdoor','fishing','hunting','tactical'][(week-1)%4]}
+function render(){
+ const lang=language(),sl=lang==='sl',now=new Date(),iso=isoWeek(now),thisWeek=Math.min(iso.week,52);
+ let next=thisWeek;while(next<=52&&scheduledCategory(next)!==category)next++;
+ let year=iso.year;if(next>52){next=1;year++}
+ const trackIndex=Math.floor((next-1)/4),challenge=challengeBank[track.ids[trackIndex]],weekKey=year+'-'+String(next).padStart(2,'0'),active=next===thisWeek&&year===iso.year,done=!!progress[weekKey];
+ root.innerHTML='';
+ const heading=document.createElement('div');heading.className='section-head';
+ heading.innerHTML='<div><div class="eyebrow">'+(sl?'TEDENSKI IZZIVI':'WEEKLY CHALLENGES')+'</div><h2>'+(sl?'13 izzivov za to področje':'13 challenges for this field')+'</h2></div><p class="section-intro">'+(sl?'Skupni 52-tedenski program je razdeljen na štiri področja. Vsak teden je na vrsti eno področje, zato se izziv tega področja ponovi vsake štiri tedne.':'The shared 52-week programme has four tracks. One track is featured each week, so each category returns every four weeks.')+'</p>';
+ root.append(heading);
+ const current=document.createElement('div');current.className='weekly-current';
+ const card=document.createElement('article');card.className='weekly-challenge-card';
+ const kicker=document.createElement('span');kicker.className='weekly-kicker';kicker.textContent=active?(sl?'IZZIV TEGA TEDNA':"THIS WEEK'S CHALLENGE"):(sl?'NASLEDNJI IZZIV':'NEXT SCHEDULED CHALLENGE');
+ const meta=document.createElement('div');meta.className='weekly-meta';meta.innerHTML='<span>'+(sl?'Teden ':'Week ')+next+' / 52</span><span>'+fmt(monday(year,next),lang)+'</span>';
+ const title=document.createElement('h2');title.textContent=challenge.title[sl?1:0];
+ const desc=document.createElement('p');desc.textContent=challenge.description[sl?1:0];
+ const task=document.createElement('p');task.className='weekly-note';task.textContent=(sl?'Tvoja naloga: ':'Your task: ')+challenge.task[sl?1:0];
+ const link=document.createElement('a');link.className='text-link';link.href=challenge.href;link.textContent=sl?'Povezana vsebina →':'Related resource →';
+ card.append(kicker,meta,title,desc,task,link);
+ const action=document.createElement('aside');action.className='weekly-action-card';
+ const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=active&&done;check.disabled=!active;
+ const labelText=document.createElement('span');labelText.textContent=active?(sl?'Označi izziv kot opravljen':'Mark this challenge as complete'):(sl?'Označevanje bo na voljo v tednu izziva':'Completion tracking opens during its scheduled week');
+ label.append(check,labelText);
+ const note=document.createElement('p');note.className='weekly-note';note.textContent=active?(sl?'Napredek se shrani lokalno v tem brskalniku in napravi.':'Progress is saved locally in this browser and device.'):(sl?'Naslednji izziv tega področja je načrtovan za navedeni teden.':'The next challenge for this category is scheduled for the week shown.');
+ action.append(label,note);check.addEventListener('change',()=>{progress[weekKey]=check.checked;try{localStorage.setItem(storageKey,JSON.stringify(progress))}catch(e){}render()});
+ current.append(card,action);root.append(current);
+ const sub=document.createElement('div');sub.className='section-head';sub.style.marginTop='42px';
+ sub.innerHTML='<div><div class="eyebrow">'+(sl?'CELOTEN PROGRAM':'FULL PROGRAMME')+'</div><h2>'+(sl?'Vseh 13 izzivov':'All 13 challenges')+'</h2></div><p class="section-intro">'+(sl?'Preglej vseh 13 izzivov tega področja in odpri povezane vsebine.':'Browse all 13 challenges in this track and open the related resources.')+'</p>';root.append(sub);
+ const list=document.createElement('div');list.className='weekly-upcoming';
+ track.ids.forEach((id,i)=>{const item=challengeBank[id],week=i*4+(['outdoor','fishing','hunting','tactical'].indexOf(category)+1),article=document.createElement('article'),small=document.createElement('small'),h=document.createElement('h3'),p=document.createElement('p'),a=document.createElement('a');
+ small.textContent=(sl?'TEDEN ':'WEEK ')+week+' / 52';h.textContent=item.title[sl?1:0];p.textContent=item.description[sl?1:0];a.className='text-link';a.href=item.href;a.textContent=sl?'Več →':'Learn more →';a.style.display='inline-block';a.style.marginTop='12px';article.append(small,h,p,a);list.append(article)});
+ root.append(list);
+ const disclaimer=document.createElement('p');disclaimer.className='weekly-note';disclaimer.textContent=sl?'Izzivi so izobraževalne ideje, ne nadomestilo za strokovno usposabljanje. Vedno upoštevaj varnost, veljavne predpise, dovoljenja in lokalna pravila.':'Challenges are educational ideas, not a substitute for professional instruction. Always follow safety guidance, current laws, permits and local rules.';root.append(disclaimer);
+}
 render();const langLabel=document.querySelector('[data-lang-label]');if(langLabel)new MutationObserver(render).observe(langLabel,{childList:true,subtree:true,characterData:true});
 })();
