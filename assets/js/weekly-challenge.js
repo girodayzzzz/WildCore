@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const c=(en,sl,de,ed,sd,dd,href)=>({title:[en,sl,de],description:[ed,sd,dd],task:[ed,sd,dd],href});
+const c=(en,sl,de,ed,sd,dd,href)=>({title:[en,sl,de],description:[ed,sd,dd],task:['Complete this check, record what you found and make one specific improvement before your next outing.','Opravi preverjanje, zapiši ugotovitve in pred naslednjim izletom uvedi eno konkretno izboljšavo.','Führe diese Prüfung durch, notiere deine Erkenntnisse und setze vor deinem nächsten Ausflug eine konkrete Verbesserung um.'],href});
 const tracks={
 outdoor:[
 c('Plan a realistic day hike','Načrtuj realen enodnevni pohod','Plane eine realistische Tageswanderung','Choose a route that matches your fitness, daylight and experience. Check distance, elevation and escape options.','Izberi pot, ki ustreza tvoji pripravljenosti, dnevni svetlobi in izkušnjam. Preveri razdaljo, višinsko razliko in možnosti umika.','Wähle eine Route passend zu Kondition, Tageslicht und Erfahrung. Prüfe Strecke, Höhenmeter und Ausweichmöglichkeiten.','destinations.html'),
