@@ -452,3 +452,9 @@ body{
   .page-hero h1{font-size:clamp(38px,11vw,54px)}
   .section h2{font-size:clamp(30px,9vw,42px)}
 }
+
+/* WILDCORE usability pass: consistent touch targets and keyboard focus */
+.tool-panel button,.journal-panel button,.kit-panel button,.tool-actions a,.journal-actions label{min-height:44px}
+.tool-panel input,.tool-panel select,.tool-panel textarea,.journal-panel input,.journal-panel select,.journal-panel textarea{box-sizing:border-box;min-width:0;max-width:100%}
+.tool-panel button:focus-visible,.journal-panel button:focus-visible,.kit-panel button:focus-visible,.tool-actions a:focus-visible,.journal-actions label:focus-within{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:700px){.tool-actions,.journal-actions{align-items:stretch}.tool-actions>* ,.journal-actions>*{max-width:100%}.tool-panel,.journal-panel{overflow-wrap:anywhere}}
