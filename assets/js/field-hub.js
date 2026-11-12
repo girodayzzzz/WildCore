@@ -2,8 +2,8 @@
 const $=id=>document.getElementById(id);
 const read=(key,fallback)=>{try{const value=JSON.parse(localStorage.getItem(key)||'null');return value??fallback}catch(e){return fallback}};
 const tools=[
- {href:'field-station.html',en:'Field Station',sl:'Terenska postaja'},
- {href:'field-kit.html',en:'Field Kit',sl:'Terenski komplet'},
+ {href:'trip-planner.html',en:'Trip Planner',sl:'Načrtovalnik izletov'},\n {href:'field-station.html',en:'Field Station',sl:'Terenska postaja'},
+ {href:'field-kit.html',en:'Field Kit',sl:'Terenski komplet'},\n {href:'field-journal.html',en:'Field Journal',sl:'Terenski dnevnik'},
  {href:'camping-checklist.html',en:'Trip Checklists',sl:'Seznami za izlete'},
  {href:'tools.html',en:'Outdoor Tools',sl:'Outdoor orodja'},
  {href:'fishing-log.html',en:'Fishing Log',sl:'Ribolovni dnevnik'},
@@ -11,14 +11,14 @@ const tools=[
  {href:'academy.html',en:'WILDCORE Academy',sl:'WILDCORE učilnica'},
  {href:'weekly-challenge.html',en:'Weekly Challenges',sl:'Tedenski izzivi'}
 ];
-const academy=read('wildcore-academy-progress-v1',[]),gear=read('wildcore-gear-builder-v1',{}),expeditions=read('wildcore-expeditions-v1',[]);
+const academy=read('wildcore-academy-progress-v1',[]),gear=read('wildcore-gear-builder-v1',{}),expeditions=read('wildcore-expeditions-v1',[]),tripPlans=read('wildcore-trip-plans-v1',[]);
 const challengeProgress=read('wildcore-category-challenges-v2',{});
 let favorites=read('wildcore-hub-favorites-v1',[]);
 if(!Array.isArray(favorites))favorites=[];
 const modules=8,completed=Array.isArray(academy)?academy.length:0;
 const items=Array.isArray(gear.items)?gear.items:[],checks=gear.checks&&typeof gear.checks==='object'?gear.checks:{};
 const packed=items.filter(name=>!!checks[name]).length,total=items.length;
-const trips=Array.isArray(expeditions)?expeditions.length:0;
+const trips=(Array.isArray(expeditions)?expeditions.length:0)+(Array.isArray(tripPlans)?tripPlans.length:0);
 const doneChallenges=challengeProgress&&typeof challengeProgress==='object'?Object.values(challengeProgress).filter(Boolean).length:0;
 const lang=()=>document.documentElement.lang==='sl'?'sl':'en';
 const set=(id,value)=>{const node=$(id);if(node)node.textContent=value};
