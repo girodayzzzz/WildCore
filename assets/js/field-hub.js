@@ -2,8 +2,10 @@
 const $=id=>document.getElementById(id);
 const read=(key,fallback)=>{try{const value=JSON.parse(localStorage.getItem(key)||'null');return value??fallback}catch(e){return fallback}};
 const tools=[
- {href:'trip-planner.html',en:'Trip Planner',sl:'Načrtovalnik izletov'},\n {href:'field-station.html',en:'Field Station',sl:'Terenska postaja'},
- {href:'field-kit.html',en:'Field Kit',sl:'Terenski komplet'},\n {href:'field-journal.html',en:'Field Journal',sl:'Terenski dnevnik'},
+ {href:'trip-planner.html',en:'Trip Planner',sl:'Načrtovalnik izletov'},
+ {href:'field-station.html',en:'Field Station',sl:'Terenska postaja'},
+ {href:'field-kit.html',en:'Field Kit',sl:'Terenski komplet'},
+ {href:'field-journal.html',en:'Field Journal',sl:'Terenski dnevnik'},
  {href:'camping-checklist.html',en:'Trip Checklists',sl:'Seznami za izlete'},
  {href:'tools.html',en:'Outdoor Tools',sl:'Outdoor orodja'},
  {href:'fishing-log.html',en:'Fishing Log',sl:'Ribolovni dnevnik'},
