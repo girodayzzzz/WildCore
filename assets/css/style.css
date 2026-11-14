@@ -535,3 +535,21 @@ body{
 .mission-saved-row button{border:1px solid var(--line);background:transparent;color:var(--gold);padding:6px 8px;font:inherit;cursor:pointer}
 @media(max-width:900px){.mission-layout{grid-template-columns:1fr}.mission-form{position:static}}
 @media(max-width:520px){.mission-fields-two{grid-template-columns:1fr}.mission-metrics{grid-template-columns:1fr 1fr 1fr}.mission-metrics strong{font-size:15px}.mission-hour{grid-template-columns:40px repeat(3,minmax(0,1fr));gap:4px;font-size:10px}.mission-form{padding:17px}}
+
+
+/* WILDCORE 2.0 — clear launch paths and connected personal workspace */
+.home-launch-section{padding-top:30px;padding-bottom:68px}
+.home-launch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.home-launch-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:250px;padding:25px;border:1px solid var(--line);border-top:2px solid var(--gold);background:linear-gradient(145deg,#1a2a20 0%,#0c1610 82%);transition:transform .2s ease,border-color .2s ease}
+.home-launch-card:hover{transform:translateY(-4px);border-color:#c9ad7b99}
+.home-launch-index{font-size:9px;letter-spacing:1.7px;font-weight:800;color:var(--gold)}
+.home-launch-card h3{font-size:23px;line-height:1.2;margin:22px 0 9px}
+.home-launch-card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 22px}
+.home-launch-card .text-link{margin-top:auto}
+.home-launch-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.hub-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hub-stat{min-width:0}
+.hub-stat strong{font-variant-numeric:tabular-nums}
+@media(max-width:800px){.home-launch-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.home-launch-grid{grid-template-columns:1fr}.home-launch-card{min-height:0;padding:20px}.hub-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:390px){.hub-stats{grid-template-columns:1fr}}
