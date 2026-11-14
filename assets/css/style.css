@@ -553,3 +553,11 @@ body{
 @media(max-width:800px){.home-launch-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.home-launch-grid{grid-template-columns:1fr}.home-launch-card{min-height:0;padding:20px}.hub-stats{grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.hub-stats{grid-template-columns:1fr}}
+
+.hub-saved-place{display:grid;gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}
+.hub-saved-place:last-child{border-bottom:0}
+.hub-saved-place strong{font-size:12px;line-height:1.5;color:var(--cream);overflow-wrap:anywhere}
+.hub-saved-place-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hub-saved-place-actions a{font-size:11px;color:var(--gold)}
+.hub-personal-grid{align-items:stretch}
+@media(max-width:700px){.hub-personal-grid{grid-template-columns:1fr}}
