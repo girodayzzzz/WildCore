@@ -500,3 +500,38 @@ body{
 .academy-certificate .btn{flex:0 0 auto;white-space:normal}
 @media(max-width:800px){.academy-pathway-grid{grid-template-columns:1fr 1fr}.academy-certificate{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.academy-pathway-grid{grid-template-columns:1fr}.academy-pathway-dashboard{padding:17px}}
+
+/* WILDCORE Outdoor Mission Planner */
+.mission-section{border-top:1px solid var(--line);padding-top:58px}
+.mission-layout{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:18px;align-items:start}
+.mission-form{position:sticky;top:18px}
+.mission-form h3,.mission-output h3{font-size:21px;margin:7px 0 14px}
+.mission-fields-two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.mission-fields-two>div{min-width:0}
+.mission-output{display:grid;gap:14px;min-width:0}
+.mission-placeholder{padding:14px;background:#0b140e;color:var(--muted);font-size:12px;line-height:1.7}
+.mission-verdict{display:grid;gap:5px;padding:14px;margin-bottom:14px;border-left:3px solid var(--gold);background:#c9ad7b12}
+.mission-verdict strong{font-size:14px;color:var(--gold)}
+.mission-verdict span{font-size:11px;color:var(--muted)}
+.mission-high .mission-verdict{border-color:#d56e55;background:#d56e5510}.mission-high .mission-verdict strong{color:#e28a70}
+.mission-caution .mission-verdict{border-color:#d0a84d;background:#d0a84d10}
+.mission-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.mission-metrics>div{padding:12px 8px;background:#0b140e;border:1px solid var(--line);display:grid;gap:5px}
+.mission-metrics strong{font-size:18px;color:var(--gold)}.mission-metrics small{font-size:10px;color:var(--muted)}
+.mission-output h4{font-size:13px;margin:18px 0 8px}
+.mission-risks{padding-left:18px;margin:0;display:grid;gap:8px;font-size:12px;line-height:1.6;color:var(--muted)}
+.mission-risk-high{color:#e4a18e}.mission-risk-medium{color:#d8c18b}
+.mission-hour-list{display:grid;gap:5px}
+.mission-hour{display:grid;grid-template-columns:48px repeat(3,minmax(0,1fr));gap:8px;padding:8px;background:#0b140e;font-size:11px;color:var(--muted)}
+.mission-hour strong{color:var(--cream)}.mission-gear-list{display:grid;gap:8px}
+.mission-gear-item{display:flex!important;align-items:flex-start;gap:10px;margin:0!important;padding:9px;border:1px solid var(--line);background:#0b140e;cursor:pointer}
+.mission-gear-item input{width:17px!important;height:17px;flex:0 0 auto;margin:1px 0 0;accent-color:var(--gold)}
+.mission-gear-item span{font-size:12px;color:var(--cream);line-height:1.45}
+.mission-gear-item input:checked+span{text-decoration:line-through;color:var(--muted)}
+.mission-actions-panel .field-actions button:disabled{opacity:.4;cursor:not-allowed}
+.mission-saved-list{display:grid;gap:6px;margin-top:14px}
+.mission-saved-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px;border:1px solid var(--line);font-size:11px}
+.mission-saved-row span{flex:1 1 150px;color:var(--muted)}
+.mission-saved-row button{border:1px solid var(--line);background:transparent;color:var(--gold);padding:6px 8px;font:inherit;cursor:pointer}
+@media(max-width:900px){.mission-layout{grid-template-columns:1fr}.mission-form{position:static}}
+@media(max-width:520px){.mission-fields-two{grid-template-columns:1fr}.mission-metrics{grid-template-columns:1fr 1fr 1fr}.mission-metrics strong{font-size:15px}.mission-hour{grid-template-columns:40px repeat(3,minmax(0,1fr));gap:4px;font-size:10px}.mission-form{padding:17px}}
