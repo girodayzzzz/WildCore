@@ -36,7 +36,7 @@ function render(){
  set('hub-places',String(Array.isArray(savedPlaces)?savedPlaces.length:0));
  set('hub-challenges',String(doneChallenges));
  set('hub-challenges-note',sl?'Opravljeno v tem brskalniku':'Completed in this browser');
- const picker=$('hub-favorite-picker'),list=$('hub-favorites'),recent=$('hub-recent');
+ const picker=$('hub-favorite-picker'),list=$('hub-favorites'),recent=$('hub-recent'),places=$('hub-saved-places');
  if(!picker||!list||!recent)return;
  picker.replaceChildren();
  tools.forEach(tool=>{
@@ -55,6 +55,19 @@ function render(){
  const history=read('wildcore-recent-pages-v1',[]).filter(x=>x&&x.href&&x.href!=='field-hub.html').slice(0,5);
  if(!history.length){const empty=document.createElement('div');empty.className='hub-empty';empty.textContent=sl?'Obiskane strani se bodo prikazale tukaj.':'Pages you visit will appear here.';recent.append(empty)}
  else history.forEach(x=>recent.append(link(x.href,x.title||x.href)));
+ if(places){
+  places.replaceChildren();
+  const saved=Array.isArray(savedPlaces)?savedPlaces.slice(-6).reverse():[];
+  if(!saved.length){const empty=document.createElement('div');empty.className='hub-empty';empty.textContent=sl?'Lokacije, ki jih shraniš na zemljevidu, se bodo prikazale tukaj.':'Places you save on the map will appear here.';places.append(empty)}
+  saved.forEach(place=>{
+   const row=document.createElement('div');row.className='hub-saved-place';
+   const name=document.createElement('strong');name.textContent=place.name|| (sl?'Shranjena lokacija':'Saved place');
+   const actions=document.createElement('div');actions.className='hub-saved-place-actions';
+   const mapLink=document.createElement('a');mapLink.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(place.lat+','+place.lon);mapLink.target='_blank';mapLink.rel='noopener noreferrer';mapLink.textContent=sl?'Navigacija ↗':'Directions ↗';
+   const planLink=document.createElement('a');planLink.href='field-station.html?destination='+encodeURIComponent(place.name||'')+'#mission-planner';planLink.textContent=sl?'Načrtuj odpravo →':'Plan mission →';
+   actions.append(mapLink,planLink);row.append(name,actions);places.append(row);
+  });
+ }
 }
 render();
 document.querySelectorAll('[data-lang-toggle]').forEach(button=>button.addEventListener('click',()=>setTimeout(render,0)));
