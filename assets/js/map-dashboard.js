@@ -13,7 +13,7 @@ const regions=[
  {id:'southeast',en:'South-east · Novo mesto',si:'Jugovzhod · Novo mesto',center:[45.8,15.2],zoom:9}
 ];
 const toolbar=document.createElement('div');toolbar.className='wc-map-tools';
-toolbar.innerHTML='<label><span>'+say('Region','Regija')+'</span><select id="wc-map-region" aria-label="'+say('Choose map region','Izberi regijo zemljevida')+'"></select></label><label class="wc-map-search"><span>'+say('Filter location list','Filtriraj seznam lokacij')+'</span><input id="wc-map-filter" type="search" placeholder="'+say('Name or location…','Ime ali lokacija…')+'"></label><button type="button" id="wc-map-reset">'+say('Reset','Ponastavi')+'</button>';
+toolbar.innerHTML='<label><span>'+say('Jump to region','Prikaži regijo')+'</span><select id="wc-map-region" aria-label="'+say('Jump the map to a region','Premakni zemljevid na regijo')+'"></select></label><label class="wc-map-search"><span>'+say('Filter location list','Filtriraj seznam lokacij')+'</span><input id="wc-map-filter" type="search" placeholder="'+say('Name or location…','Ime ali lokacija…')+'"></label><button type="button" id="wc-map-reset">'+say('Reset','Ponastavi')+'</button>';
 const head=document.querySelector('.map-results-head');if(head)head.insertAdjacentElement('afterend',toolbar);else stage.insertBefore(toolbar,results);
 const select=toolbar.querySelector('select');
 regions.forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r[sl()?'si':'en'];select.append(o)});
@@ -23,6 +23,6 @@ function filter(){const q=search.value.trim().toLocaleLowerCase();let visible=0;
 search.addEventListener('input',filter);
 reset.addEventListener('click',()=>{search.value='';select.value='all';const r=regions[0];map.setView(r.center,r.zoom);filter();search.focus()});
 const observer=new MutationObserver(filter);observer.observe(results,{childList:true,subtree:true});
-document.querySelectorAll('[data-lang-toggle]').forEach(btn=>btn.addEventListener('click',()=>{setTimeout(()=>{const value=select.value;select.replaceChildren();regions.forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r[sl()?'si':'en'];select.append(o)});select.value=value;toolbar.querySelector('label span').textContent=say('Region','Regija');toolbar.querySelector('.wc-map-search span').textContent=say('Filter location list','Filtriraj seznam lokacij');search.placeholder=say('Name or location…','Ime ali lokacija…');reset.textContent=say('Reset','Ponastavi');filter()},0)}));
+document.querySelectorAll('[data-lang-toggle]').forEach(btn=>btn.addEventListener('click',()=>{setTimeout(()=>{const value=select.value;select.replaceChildren();regions.forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r[sl()?'si':'en'];select.append(o)});select.value=value;toolbar.querySelector('label span').textContent=say('Jump to region','Prikaži regijo');toolbar.querySelector('.wc-map-search span').textContent=say('Filter location list','Filtriraj seznam lokacij');search.placeholder=say('Name or location…','Ime ali lokacija…');reset.textContent=say('Reset','Ponastavi');filter()},0)}));
 filter();
 })();
