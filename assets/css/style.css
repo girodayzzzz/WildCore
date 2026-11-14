@@ -480,3 +480,23 @@ body{
 .wc-location-links a{color:var(--gold)}
 @media(max-width:900px){.kit-library-controls{grid-template-columns:1fr 1fr}.kit-library-controls label:first-child{grid-column:1/-1}}
 @media(max-width:560px){.kit-library{padding:17px}.kit-library-controls{grid-template-columns:1fr}.kit-library-controls label:first-child{grid-column:auto}.wc-location-facts{grid-template-columns:1fr}.wc-location-main{flex-direction:column}.wc-location-save{align-self:flex-start}}
+
+/* Academy topic pathways and earned learning badges */
+.academy-pathway-dashboard{margin:0 0 28px;padding:24px;border:1px solid var(--line);background:linear-gradient(145deg,#17251c,#0d1711)}
+.academy-pathway-head h3{font-size:23px;margin:8px 0}.academy-pathway-head p{font-size:12px;color:var(--muted);line-height:1.65;margin:0 0 18px}
+.academy-pathway-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.academy-pathway-card{padding:17px;border:1px solid var(--line);background:#0b150f}
+.academy-pathway-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:13px;color:var(--cream)}
+.academy-pathway-top strong{color:var(--gold);font-size:20px}
+.academy-pathway-card>p{min-height:42px;color:var(--muted);font-size:11px;line-height:1.55}
+.academy-pathway-track{height:5px;background:#ffffff18;margin:12px 0 8px}.academy-pathway-track span{display:block;height:100%;background:var(--gold)}
+.academy-pathway-card>small{font-size:10px;color:var(--muted)}
+.academy-earned{display:block;margin-top:10px;color:#c9ad7b;font-size:9px;letter-spacing:1px;font-weight:800}
+.academy-pathway-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.academy-pathway-links a{font-size:10px;color:var(--gold);border:1px solid var(--line);padding:5px 7px}
+.academy-certificate{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:16px;padding:18px;border:1px solid #c9ad7b77;background:#17251b}
+.academy-certificate[hidden]{display:none}
+.academy-certificate p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+.academy-certificate .btn{flex:0 0 auto;white-space:normal}
+@media(max-width:800px){.academy-pathway-grid{grid-template-columns:1fr 1fr}.academy-certificate{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.academy-pathway-grid{grid-template-columns:1fr}.academy-pathway-dashboard{padding:17px}}
