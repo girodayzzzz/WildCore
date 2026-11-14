@@ -1,0 +1,34 @@
+(()=>{'use strict';
+const root=document.querySelector('#academy-modules');if(!root)return;
+const groups=[
+ {id:'planning',en:'Planning & navigation',sl:'Načrtovanje in orientacija',mods:['01','02','08'],noteEn:'Route choices, navigation and emergency communication.',noteSl:'Odločanje o poti, orientacija in komunikacija v sili.'},
+ {id:'safety',en:'Shelter & safety',sl:'Zavetje in varnost',mods:['03','05','06'],noteEn:'Campsite decisions, weather and exposure management.',noteSl:'Odločitve o taboru, vreme in zaščita pred izpostavljenostjo.'},
+ {id:'fieldcraft',en:'Fieldcraft & responsibility',sl:'Terenske veščine in odgovornost',mods:['04','07','09','10'],noteEn:'Water, low-impact practice, hygiene and equipment care.',noteSl:'Voda, odgovorno ravnanje, higiena in skrb za opremo.'}
+];
+const sl=()=>document.documentElement.lang==='sl',say=(en,si)=>sl()?si:en;
+const boxes=[...root.querySelectorAll('[data-module-complete]')];
+boxes.forEach(box=>{const id=String(box.value).padStart(2,'0'),card=box.closest('article');if(card&&!card.id)card.id='academy-module-'+id});
+const panel=document.createElement('section');panel.className='academy-pathway-dashboard';panel.innerHTML='<div class="academy-pathway-head"><div><span class="eyebrow">'+say('LEARNING PATHS','UČNE POTI')+'</span><h3>'+say('Build skills step by step','Gradi znanje korak za korakom')+'</h3><p>'+say('Complete the linked modules to earn a local WILDCORE learning badge. Your progress stays in this browser.','Opravi povezane module in pridobi lokalno WILDCORE učno značko. Napredek ostane v tem brskalniku.')+'</p></div></div><div class="academy-pathway-grid"></div><div class="academy-certificate" hidden><div><strong>'+say('All foundation modules completed','Vsi osnovni moduli so opravljeni')+'</strong><p>'+say('Complete the final knowledge challenge with 5/5 to unlock a printable WILDCORE completion record. It is not an accredited qualification.','Za tisk potrdila o zaključku dosezi 5/5 na končnem preizkusu. To ni uradna ali akreditirana kvalifikacija.')+'</p></div><button type="button" class="btn" data-print-certificate>'+say('Print completion record','Natisni potrdilo o zaključku')+'</button></div>';
+const progress=root.querySelector('[data-academy-progress]');if(progress)progress.insertAdjacentElement('afterend',panel);else root.prepend(panel);
+const grid=panel.querySelector('.academy-pathway-grid');
+function bestScore(){try{const h=JSON.parse(localStorage.getItem('wildcore-academy-quiz-history-v1')||'[]');return Array.isArray(h)&&h.length?Math.max(...h.map(x=>Number(x.score)||0)):0}catch(e){return 0}}
+function update(){
+ const done=new Set(boxes.filter(b=>b.checked).map(b=>String(b.value).padStart(2,'0')));
+ grid.innerHTML='';
+ groups.forEach(g=>{const n=g.mods.filter(id=>done.has(id)).length,p=Math.round(n/g.mods.length*100),card=document.createElement('article');card.className='academy-pathway-card';card.innerHTML='<div class="academy-pathway-top"><span>'+g[g.en?'en':'en']+'</span><strong>'+p+'%</strong></div><p>'+ (sl()?g.noteSl:g.noteEn)+'</p><div class="academy-pathway-track"><span style="width:'+p+'%"></span></div><small>'+n+'/'+g.mods.length+' '+say('modules completed','opravljenih modulov')+'</small>'+(p===100?'<span class="academy-earned">'+say('✓ PATH BADGE EARNED','✓ ZNAČKA PRIDOBLJENA')+'</span>':'')+'<div class="academy-pathway-links">'+g.mods.map(id=>'<a href="#academy-module-'+id+'">'+say('Module','Modul')+' '+id+'</a>').join('')+'</div>';card.querySelector('.academy-pathway-top span').textContent=sl()?g.sl:g.en;grid.append(card)});
+ const complete=boxes.length>0&&done.size===boxes.length;panel.querySelector('.academy-certificate').hidden=!complete;
+}
+boxes.forEach(b=>b.addEventListener('change',update));
+const quiz=document.querySelector('[data-final-quiz-form]');if(quiz)quiz.addEventListener('submit',()=>setTimeout(update,0));
+document.querySelectorAll('[data-lang-toggle]').forEach(btn=>btn.addEventListener('click',()=>setTimeout(update,0)));
+panel.querySelector('[data-print-certificate]').addEventListener('click',()=>{
+ if(boxes.some(b=>!b.checked)||bestScore()<5){alert(say('Complete all modules and score 5/5 in the final quiz first.','Najprej opravi vse module in dosezi 5/5 na končnem kvizu.'));return}
+ const person=prompt(say('Name for the completion record (optional):','Ime za potrdilo (neobvezno):'),'')||say('WILDCORE learner','Udeleženec WILDCORE');
+ const w=window.open('','_blank');if(!w){alert(say('Allow pop-ups to print your completion record.','Dovoli pojavna okna za tisk potrdila.'));return}
+ const safe=person.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const title=say('Certificate of Completion','Potrdilo o zaključku');
+ w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>'+title+' | WILDCORE</title><style>body{margin:0;background:#101a13;color:#eee;font-family:Georgia,serif;display:grid;place-items:center;min-height:100vh}.sheet{box-sizing:border-box;width:90%;max-width:900px;padding:70px 55px;border:8px double #bda779;text-align:center;background:#17251b}.brand{letter-spacing:8px;color:#c9ad7b;font:700 16px Arial}.eyebrow{letter-spacing:3px;color:#c9ad7b;font:12px Arial;margin:50px 0 18px}h1{font-size:42px;font-weight:400;margin:0 0 24px}h2{font-size:34px;color:#d8c79f;font-weight:400;border-bottom:1px solid #bda779;padding-bottom:20px}.copy{font:15px/1.8 Arial;color:#c7cec5}.score{margin:30px;font:700 14px Arial;letter-spacing:2px;color:#c9ad7b}.foot{margin-top:55px;font:11px/1.7 Arial;color:#9ba99a}@media print{body{background:#fff}.sheet{width:100%;max-width:none;min-height:95vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}}</style></head><body><main class="sheet"><div class="brand">WILDCORE</div><div class="eyebrow">'+title.toUpperCase()+'</div><h1>'+title+'</h1><h2>'+safe+'</h2><p class="copy">'+say('has completed the WILDCORE Outdoor Foundations learning path, including all 10 learning modules and the final knowledge challenge.','je zaključil/-a učno pot WILDCORE – Osnove bivanja v naravi, vseh 10 učnih modulov in končni preizkus znanja.')+'</p><div class="score">'+say('FINAL KNOWLEDGE CHALLENGE · 5 / 5','KONČNI PREIZKUS ZNANJA · 5 / 5')+'</div><p class="foot">'+new Date().toLocaleDateString()+'<br>'+say('Personal learning record only. This document is not an accredited qualification, licence or professional certification.','Osebno potrdilo o učenju. Dokument ni akreditirana kvalifikacija, dovoljenje ali strokovni certifikat.')+'</p></main><script>window.onload=()=>window.print()<\/script></body></html>');
+ w.document.close();
+});
+update();
+})();
