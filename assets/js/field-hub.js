@@ -17,7 +17,7 @@ const academy=read('wildcore-academy-progress-v1',[]),gear=read('wildcore-gear-b
 const challengeProgress=read('wildcore-category-challenges-v2',{});
 let favorites=read('wildcore-hub-favorites-v1',[]);
 if(!Array.isArray(favorites))favorites=[];
-const modules=8,completed=Array.isArray(academy)?academy.length:0;
+const modules=10,completed=Array.isArray(academy)?academy.length:0;
 const items=Array.isArray(gear.items)?gear.items:[],checks=gear.checks&&typeof gear.checks==='object'?gear.checks:{};
 const packed=items.filter(name=>!!checks[name]).length,total=items.length;
 const trips=(Array.isArray(expeditions)?expeditions.length:0)+(Array.isArray(tripPlans)?tripPlans.length:0);
