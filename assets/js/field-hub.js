@@ -4,6 +4,7 @@ const read=(key,fallback)=>{try{const value=JSON.parse(localStorage.getItem(key)
 const tools=[
  {href:'trip-planner.html',en:'Trip Planner',sl:'Načrtovalnik izletov'},
  {href:'field-station.html',en:'Field Station',sl:'Terenska postaja'},
+ {href:'field-station.html#mission-planner',en:'Mission Planner',sl:'Načrtovalnik odprav'},
  {href:'field-kit.html',en:'Field Kit',sl:'Terenski komplet'},
  {href:'field-journal.html',en:'Field Journal',sl:'Terenski dnevnik'},
  {href:'camping-checklist.html',en:'Trip Checklists',sl:'Seznami za izlete'},
@@ -13,7 +14,7 @@ const tools=[
  {href:'academy.html',en:'WILDCORE Academy',sl:'WILDCORE učilnica'},
  {href:'weekly-challenge.html',en:'Weekly Challenges',sl:'Tedenski izzivi'}
 ];
-const academy=read('wildcore-academy-progress-v1',[]),gear=read('wildcore-gear-builder-v1',{}),expeditions=read('wildcore-expeditions-v1',[]),tripPlans=read('wildcore-trip-plans-v1',[]);
+const academy=read('wildcore-academy-progress-v1',[]),gear=read('wildcore-gear-builder-v1',{}),expeditions=read('wildcore-expeditions-v1',[]),tripPlans=read('wildcore-trip-plans-v1',[]),missionPlans=read('wildcore-mission-plans-v1',[]),savedPlaces=read('wildcore-map-saved-locations-v1',[]);
 const challengeProgress=read('wildcore-category-challenges-v2',{});
 let favorites=read('wildcore-hub-favorites-v1',[]);
 if(!Array.isArray(favorites))favorites=[];
@@ -31,6 +32,8 @@ function render(){
  set('hub-academy-note',Math.min(completed,modules)+' / '+modules+' '+(sl?'modulov opravljenih':'modules completed'));
  set('hub-gear',total?packed+' / '+total:'—');
  set('hub-trips',String(trips));
+ set('hub-missions',String(Array.isArray(missionPlans)?missionPlans.length:0));
+ set('hub-places',String(Array.isArray(savedPlaces)?savedPlaces.length:0));
  set('hub-challenges',String(doneChallenges));
  set('hub-challenges-note',sl?'Opravljeno v tem brskalniku':'Completed in this browser');
  const picker=$('hub-favorite-picker'),list=$('hub-favorites'),recent=$('hub-recent');
