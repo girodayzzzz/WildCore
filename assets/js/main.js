@@ -10,8 +10,10 @@ function applyLanguage(next){lang=next;localStorage.setItem(key,lang);document.d
  const t=(a)=>a[lang==='sl'?2:lang==='de'?3:1];
  const home='<a class="nav-home" href="index.html" data-en="Home" data-sl="Domov" data-de="Startseite"'+(current==='index.html'?' aria-current="page"':'')+'>'+t(['index.html','Home','Domov','Startseite'])+'</a>';
  const groupsHtml=groups.map(g=>{const active=g.links.some(x=>x[0].split('#')[0]===current);return '<details class="nav-group"'+(active?' data-active="true"':'')+'><summary data-en="'+g.label[0]+'" data-sl="'+g.label[1]+'" data-de="'+g.label[2]+'">'+g.label[lang==='sl'?1:lang==='de'?2:0]+'</summary><div class="nav-dropdown">'+g.links.map(x=>'<a href="'+x[0]+'" data-en="'+x[1]+'" data-sl="'+x[2]+'" data-de="'+x[3]+'"'+(current===x[0]?' aria-current="page"':'')+'>'+t(x)+'</a>').join('')+'</div></details>'}).join('');
+ const library='<a href="preparedness.html" data-en="Preparedness" data-sl="Pripravljenost" data-de="Vorbereitung"'+(current==='preparedness.html'?' aria-current="page"':'')+'>'+t(['preparedness.html','Preparedness','Pripravljenost','Vorbereitung'])+'</a>';
+ const shopLink='<a href="shop.html" data-en="Shop" data-sl="Trgovina" data-de="Shop"'+(current==='shop.html'?' aria-current="page"':'')+'>'+t(['shop.html','Shop','Trgovina','Shop'])+'</a>';
  const community='<a href="community.html" data-en="Community" data-sl="Skupnost" data-de="Community"'+(current==='community.html'?' aria-current="page"':'')+'>'+t(['community.html','Community','Skupnost','Community'])+'</a>';
- nav.innerHTML=home+groupsHtml+community;
+ nav.innerHTML=home+groupsHtml+library+shopLink+community;
  nav.setAttribute('aria-label',lang==='sl'?'Glavna navigacija':'Main navigation');
  nav.id='primary-navigation';
  nav.querySelectorAll('.nav-group').forEach(group=>{
